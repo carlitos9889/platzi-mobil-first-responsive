@@ -1,0 +1,47 @@
+---
+import TrendingUpSvg from "../components/TrendingUpSvg.astro";
+import TrendingDownSvg from "../components/TrendingDownSvg.astro";
+
+export interface Item {
+	nameCripto: string;
+	price: number;
+	isUp?: boolean;
+}
+
+interface Props {
+	title: string;
+	items: Item[];
+}
+
+const { title, items } = Astro.props;
+---
+
+<p class="text-center my-4 text-lg text-bitcoinorange font-bold">{title}</p>
+<table class="text-grey px-7 w-full">
+	<tbody class="">
+		{
+			items.map(({ nameCripto, price, isUp }, index) => {
+				const rounded =
+					index === 0
+						? "rounded-tl-lg rounded-tr-lg"
+						: index === items.length - 1
+						? "rounded-bl-lg rounded-br-lg"
+						: "";
+
+				return (
+					<tr
+						class={`w-full flex justify-around py-2 bg-justwhite ${rounded} rounded-tr-lg`}
+					>
+						<td>{nameCripto}</td>
+						<td class="flex items-center justify-start">
+							<p class="mr-1">${price}</p>
+							<span>
+								{isUp ? <TrendingUpSvg /> : <TrendingDownSvg />}
+							</span>
+						</td>
+					</tr>
+				);
+			})
+		}
+	</tbody>
+</table>

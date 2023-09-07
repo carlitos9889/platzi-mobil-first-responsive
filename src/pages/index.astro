@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CustomHeader from "../components/CustomHeader.astro";
+import BitcoinSvg from "../components/BitcoinSvg.astro";
+import CustomTable, { type Item } from "../components/CustomTable.astro";
+import BatataSvg from "../components/BatataSvg.astro";
+
+const items: Item[] = [
+	{
+		nameCripto: "Bitcoint",
+		price: 1.96,
+		isUp: true,
+	},
+	{
+		nameCripto: "Ethereum",
+		price: 0.07,
+	},
+	{
+		nameCripto: "Stellar",
+		price: 0.02,
+		isUp: true,
+	},
+	{
+		nameCripto: "Ripplen",
+		price: 4.96,
+	},
+];
+---
+
+<Layout title="Welcome to Astro.">
+	<CustomHeader />
+	<main class="bg-offwhite w-full h-auto">
+		<section class="pt-10 px-4">
+			<div class="w-full flex justify-center mb-8">
+				<BitcoinSvg />
+			</div>
+			<h2 class="text-center text-xl mb-3">
+				Visibilizamos todas las tasas de cambio
+			</h2>
+			<p class="text-center text-sm text-grey">
+				Traemos información en tiempo real de las tasas de cambios y las
+				monedas más importantes del mundo
+			</p>
+		</section>
+		<section class="w-full pb-7 px-4">
+			<CustomTable title="Monedas" items={items} />
+		</section>
+		<section class="py-5 px-4 mx-7 mb-7 rounded-lg bg-softorange">
+			<p class="text-center text-sm">
+				<span class="font-bold">Actualizado:</span> 19 Julio 23:45
+			</p>
+		</section>
+		<section class="bg-black relative pt-16 text-offwhite px-3">
+			<div class="flex justify-center">
+				<span class="absolute -top-3"><BatataSvg /></span>
+			</div>
+			<div>
+				<h2 class="text-3xl text-center mb-5">
+					Creamos un producto si comparación
+				</h2>
+				<p style="color: #808080" class="text-center text-lg">
+					Confiable y diseñado para su uso diario
+				</p>
+			</div>
+		</section>
+	</main>
+	<footer></footer>
+</Layout>
