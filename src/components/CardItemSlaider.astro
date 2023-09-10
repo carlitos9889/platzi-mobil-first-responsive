@@ -1,0 +1,27 @@
+---
+import OrangeRightArrowSvg from "./OrangeRightArrowSvg.astro";
+---
+
+<div
+	class="h-64 w-72 mt-14 px-4 bg-justwhite rounded-lg shadow-md relative flex flex-col items-center"
+>
+	<div
+		class="absolute py-2 rounded-lg bg-bitcoinorange flex justify-center items-center -top-4 px-4"
+	>
+		<p class="text-center text-lg text-offwhite font-bold">Recomendado</p>
+	</div>
+	<div class="flex flex-col items-center pt-10">
+		<h3 class="font-bold text-xl">Pago Anual</h3>
+		<p class="text-7xl font-light flex">
+			<span class="text-lg mr-2">$</span>99
+		</p>
+		<p style="color: #757575;" class="mx-4 text-center">
+			* Ahorras %129 comparado al plan mensual.
+		</p>
+		<button
+			class="border-2 rounded border-bitcoinorange font-bold px-3 py-2 mt-3 flex"
+			>Escoger este
+			<span class="ml-2"> <OrangeRightArrowSvg /></span></button
+		>
+	</div>
+</div>

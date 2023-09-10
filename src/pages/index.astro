@@ -4,6 +4,9 @@ import CustomHeader from "../components/CustomHeader.astro";
 import BitcoinSvg from "../components/BitcoinSvg.astro";
 import CustomTable, { type Item } from "../components/CustomTable.astro";
 import BatataSvg from "../components/BatataSvg.astro";
+import CustomCard from "../components/CustomCard.astro";
+import ClockSvg from "../components/ClockSvg.astro";
+import CardItemSlaider from "../components/CardItemSlaider.astro";
 
 const items: Item[] = [
 	{
@@ -25,11 +28,42 @@ const items: Item[] = [
 		price: 4.96,
 	},
 ];
+
+type Info = {
+	header: string;
+	content: string;
+	icono: ICONOS;
+};
+
+enum ICONOS {
+	CLOCK,
+}
+
+const cardsInfo: Info[] = [
+	{
+		header: "Tiempo Real",
+		content:
+			"Nuestra API toma información minuto a minuto sobre las tasas que más determinan el comportamiento",
+		icono: ICONOS.CLOCK,
+	},
+	{
+		header: "No hay tasas escondidas",
+		content:
+			"Ni en la compra o al momento de exit, Batabit siempre te muestra el costo real de lo que estás adquiriendo",
+		icono: ICONOS.CLOCK,
+	},
+	{
+		header: "Compara monedas",
+		content:
+			"No más rumores, con Baabit sabrás el valor real de cada moneda en el mercado actual dddddddddddd d d dd d d d d d d d d d d  dd d d d d d d d d d d d d d d d d d d d d d d dd d d d d d d d d  ",
+		icono: ICONOS.CLOCK,
+	},
+];
 ---
 
 <Layout title="Welcome to Astro.">
 	<CustomHeader />
-	<main class="bg-offwhite w-full h-auto">
+	<main class="bg-offwhite w-full h-auto pb-2">
 		<section class="pt-10 px-4">
 			<div class="w-full flex justify-center mb-8">
 				<BitcoinSvg />
@@ -42,27 +76,98 @@ const items: Item[] = [
 				monedas más importantes del mundo
 			</p>
 		</section>
-		<section class="w-full pb-7 px-4">
+		<section class="w-full pb-7 px-4 max-w-sm mx-auto">
 			<CustomTable title="Monedas" items={items} />
 		</section>
-		<section class="py-5 px-4 mx-7 mb-7 rounded-lg bg-softorange">
-			<p class="text-center text-sm">
-				<span class="font-bold">Actualizado:</span> 19 Julio 23:45
+		<section
+			class="py-5 px-4 rounded-lg bg-softorange max-w-sm mx-auto mb-4 max-[400px]:mx-3"
+		>
+			<p class="text-center text-sm mx-2">
+				<span class="font-bold w-full">Actualizado:</span> 19 Julio
+				23:45
 			</p>
 		</section>
-		<section class="bg-black relative pt-16 text-offwhite px-3">
+		<section class="bg-black relative pt-16 text-offwhite px-3 pb-7">
 			<div class="flex justify-center">
 				<span class="absolute -top-3"><BatataSvg /></span>
 			</div>
 			<div>
-				<h2 class="text-3xl text-center mb-5">
+				<h2 class="text-2xl text-center mb-5">
 					Creamos un producto si comparación
 				</h2>
-				<p style="color: #808080" class="text-center text-lg">
+				<p style="color: #808080" class="text-center text-base mb-5">
 					Confiable y diseñado para su uso diario
 				</p>
 			</div>
+			<div class="md:grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+				{
+					cardsInfo.map(({ content, header, icono }) => {
+						return (
+							<div>
+								<CustomCard>
+									<ClockSvg />
+									<p class="mb-1 mt-2 text-xl font-bold">
+										{header}
+									</p>
+									<p
+										style="color: #808080"
+										class="text-sm  text-ellipsis overflow-hidden"
+									>
+										{content}
+									</p>
+								</CustomCard>
+								<div class="mb-2" />
+							</div>
+						);
+					})
+				}
+			</div>
+		</section>
+
+		<section>
+			<div class="bg-logo w-full h-80 bg-cover bg-center">
+				<p class="text-center py-20 text-offwhite text-3xl">
+					Conócelo hoy
+				</p>
+			</div>
+		</section>
+		<section>
+			<div>
+				<h2 class="text-center py-10 font-bold text-2xl text-black">
+					Escoge el plane que mejor se ajuste a ti
+				</h2>
+				<div class="w-full flex justify-center">
+					<p style="color: #757575" class="w-3/4 text-center">
+						Cualquier plan te da acceso completo a nuestra
+						plataforma
+					</p>
+				</div>
+			</div>
+			<section class="h-80 flex overflow-x-scroll justify-evenly gap-3">
+				{
+					Array(3)
+						.fill(null)
+						.map((_) => (
+							<article class="snap-center">
+								<CardItemSlaider />
+							</article>
+						))
+				}
+			</section>
 		</section>
 	</main>
-	<footer></footer>
+	<footer
+		class="w-full flex h-40 bg-bitcoinorange justify-center items-center"
+	>
+		<section class="w-full flex justify-center items-center">
+			<ul class="text-offwhite">
+				<li><a href="">Linkedin</a></li>
+				<li><a href="">CrunchBase</a></li>
+				<li><a href="">Hackernews</a></li>
+			</ul>
+		</section>
+		<section class="w-full flex justify-center items-center">
+			<img src="/assets/img/logo-footer.svg" alt="Logo de Batatabit" />
+		</section>
+	</footer>
 </Layout>

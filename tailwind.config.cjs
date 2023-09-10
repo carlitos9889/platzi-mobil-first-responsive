@@ -16,7 +16,11 @@ module.exports = {
 			offwhite: "#faf8f7",
 			justwhite: "#fff",
 		},
-		extend: {},
+		extend: {
+			backgroundImage: {
+				logo: "url('/assets/img/bitcoinbaby2x.png')",
+			},
+		},
 	},
 	plugins: [],
 };
